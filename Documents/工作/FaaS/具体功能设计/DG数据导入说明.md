@@ -1,0 +1,123 @@
+## 一、DG数据格式
+
+目前客户给的数据，都是以Cluster的维度来进行提供，Cluster内的数据参考如下：
+![Dingtalk_20230412141026.jpg - Droplr](https://d.pr/i/A62OMo+)
+
+目前猜测的内容分别是：
+
+Collec：表示当前的Cluster汇聚设备
+Fcp：当前Cluster的2级汇聚设备
+Dp：当前Cluster内的覆盖设备
+Sp：对应Service Point
+
+Col_cables: 当前Cluster内的Collec到FCP的光缆
+col_bundles:对应放置col_cables的管道
+d2_cables: FCP到DP的光缆
+d2_bundles:对应放置d2_cables的管道
+drop_cables: DP 到 SP的光缆
+drop_e:猜测是drop_cables对应的子管
+drop_bundles:对应放置drop_cables的管道
+trenches:所有涉及到的沟
+
+## 分光比
+
+从数据分析，目前数据采取2级分光：
+L1：1：8
+L2：1：16
+
+## 每个图层对应的设计元素，以及属性的映射
+
+### 设计元素映射
+
+由于直接采取图层文件映射到我们的设计元素的原则，进行如下定义：
+  
+这里的n是表示具体的数字。
+| 文件名 | 匹配资源类型 |匹配设计元素 |
+| - | - | - |
+| cluster_n_fcp | F_CLOSURE | cluster_fcp |
+|cluster_n_dp	|ODB	|cluster_dp|
+|cluster_n_col_bundles	|PIPELINE_B	|cluster_col_bundles|
+|cluster_n_col_cables	|F_CABLE	|cluster_col_cable|
+|cluster_n_col_e	|不导入	|不导入|
+|cluster_n_collec	|ODF	|cluster_collec|
+|cluster_n_d2_bundles	|PIPELINE_B|	cluster_d2_bundles|
+|cluster_n_d2_cables	|F_CABLE	|cluster_d2_cable|
+|cluster_n_drop_bundles	|PIPELINE_B	|cluster_drop_bundles|
+|cluster_n_drop_cables	|F_CABLE	|cluster_drop_cable|
+|cluster_n_drop_e	|不导入	|不导入|
+|cluster_n_sp	|ODB	|cluster_sp|
+|cluster_n_trenches	|PIPELINE_G	|cluster_trenche|
+
+### 关键属性映射
+
+注意：
+* 不映射指直接导入json字段，不做特殊处理
+* 对于点，经纬度字段需要处理
+* 对于线，如果有长度映射则直接使用，如果没有，则需要处理长度
+* 需要做功能，指这部分信息，除了不映射直接导入json字段之后，还需要做特殊的逻辑功能来处理
+
+
+#### SP/DP/FCP/COLLEC
+| 属性名 | 映射的属性名 |说明 |
+| - | - | - |
+| splitters | splitters | 内部分光器数量，分光比1：16 |
+| splices | 需要做功能 | 当前设备内的所有链接,对应我们系统中记录的是splitter的下行连接数，这里需要做下代码转换 |
+| f_act | active_fibers_in | 从上行下来的连接的纤芯数 |
+| f_sp | spare_fibers_in | 从上行下来的有业务含义，但是预留的纤芯数 |
+| sp_node | 不映射 | ？ |
+| type | fix_type | 安装方式，UG对应我们的Underground |
+| we | hps | 覆盖用户数 |
+| max_fibres | 不映射 | ？ |
+| max_ducts | 不映射 | ？ |
+| max_splices | 不映射 | ？ |
+| sp_category | 不映射 | 用户类型 |
+| f_gpon | 不映射 | gpon业务纤芯数 |
+| f_dir_dp | 不映射 | P2P业务纤芯数 |
+| f_dir_fcp | 不映射 | 只有1级分光业务纤芯数 |
+| is_dp | 不映射 | ? |
+
+
+#### CABLES
+| 属性名 | 映射的属性名 |说明 |
+| - | - | - |
+| id_cable | extenal_id | 外部系统id |
+| category | cable_type | 光缆类型 |
+| st_box | 需要做功能 | 起始设备ID |
+| end_box | 需要做功能 | 终止设备ID |
+| c_size | capacity | 纤芯数 |
+| f_act | active_fibers | 有链接的纤芯数 |
+| f_spare | spare_fibers | 备用的纤芯数 |
+| paths | 不映射 | 经过的沟的信息 |
+
+
+#### Duct
+| 属性名 | 映射的属性名 |说明 |
+| - | - | - |
+| bundle_id | extenal_id | 外部系统id |
+| category | net_level | 管道的网络级别 |
+| st_box | 需要做功能 | 起始设备ID |
+| end_box | 需要做功能 | 终止设备ID |
+| bundle_size | sub_ducts | 子管类型 |
+| cables | 不映射 | 包含的光缆的信息？ |
+| trenches | 不映射 | 穿过的沟的信息？ |
+| length | gis_len | 长度 |
+
+#### Trench
+| 属性名 | 映射的属性名 |说明 |
+| - | - | - |
+| id_trench | extenal_id | 外部系统id |
+| category | cable_type | 光缆类型 |
+| source | 需要做功能 | 起始设备ID |
+| target | 需要做功能 | 终止设备ID |
+| drop_cables | 不映射 | 当前沟内的drop_cables信息 |
+| d2_cables | 不映射 | 当前沟内的d2_cables信息 |
+| col_cables | 不映射 | 当前沟内的col_cables信息 |
+| drop_ducts | 不映射 | 当前沟内的drop_duct的数量？ |
+| d2_ducts | 不映射 | 当前沟内的d2_duct的数量？ |
+| col_ducts | 不映射 | 当前沟内的col_duct的数量？ |
+| col_bundles | 不映射 | 当前沟内的col_bundles的定义？后面的：1是什么？ |
+| drop_bundles | 不映射 | 当前沟内的drop_bundles的定义？后面的：1是什么？ |
+| d2_bundles | 不映射 | 当前沟内的d2_bundles的定义？后面的：1是什么？|
+| length | gis_len | 长度 |
+
+
