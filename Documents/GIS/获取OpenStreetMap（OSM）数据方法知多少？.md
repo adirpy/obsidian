@@ -1,1 +1,0 @@
-[获取OpenStreetMap（OSM）数据方法知多少？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/25889246)
