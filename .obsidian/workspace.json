@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md",
+                "file": "Documents/工作/FaaS/具体功能设计/草稿箱/DG数据导入说明(2022-0509-Update).md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md",
+                "file": "Documents/工作/FaaS/具体功能设计/草稿箱/DG数据导入说明(2022-0509-Update).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md",
+                "file": "Documents/工作/FaaS/具体功能设计/草稿箱/DG数据导入说明(2022-0509-Update).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md"
+                "file": "Documents/工作/FaaS/具体功能设计/草稿箱/DG数据导入说明(2022-0509-Update).md"
               }
             }
           }
@@ -148,17 +148,21 @@
   },
   "active": "fe3c20fcb1ef03cd",
   "lastOpenFiles": [
-    "Documents/工作/环境信息列表/FaaS BOL翻墙.md",
-    "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md",
-    "Documents/工作/FaaS/具体功能设计/DG数据导入说明(2022-0509-Update).md",
-    "Documents/工作/FaaS/具体功能设计/管道，沟总体改造 -- 20230317 update.md",
-    "Documents/工作/FaaS/具体功能设计/基础设施管理和工勘支持总体设计.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/HO数据导入逻辑.md",
     "Documents/工作/FaaS/具体功能设计/属性管理提升.md",
-    "Documents/工作/FaaS/具体功能设计/地址覆盖管理.md",
-    "Documents/工作/FaaS/具体功能设计/内部设计，支持纤芯预留.md",
-    "Documents/工作/FaaS/具体功能设计/HO数据导入逻辑.md",
-    "Documents/工作/FaaS/具体功能设计/HO模式资源同步逻辑步骤说明.md",
-    "Documents/工作/FaaS/具体功能设计/FaaS整体流程设计.md",
+    "Documents/工作/FaaS/具体功能设计/已定稿/基础设施管理和工勘支持总体设计.md",
+    "Documents/工作/FaaS/具体功能设计/已定稿/地址覆盖管理.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/内部设计，支持纤芯预留.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/HO模式资源同步逻辑步骤说明.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/引用利旧权限定义.md",
+    "Documents/工作/FaaS/具体功能设计/已定稿/管道，沟总体改造 -- 20230317 update.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/FaaS整体流程设计.md",
+    "Documents/工作/FaaS/具体功能设计/草稿箱/DG数据导入说明(2022-0509-Update).md",
+    "Documents/工作/FaaS/具体功能设计/网格定义设计.md",
+    "Documents/工作/FaaS/具体功能设计/已定稿",
+    "Documents/工作/FaaS/具体功能设计/草稿箱",
+    "Documents/工作/每日工作记录/2023年/5月份/2023-05-10 会议讨论UI.md",
+    "Documents/工作/环境信息列表/FaaS BOL翻墙.md",
     "Documents/工作/FaaS/FaaS整体介绍文档/5. 概念定义.md",
     "Documents/工作/FaaS/FaaS整体介绍文档/6. 项目中特殊概念.md",
     "Documents/工作/每日工作/2023年3月.md",
